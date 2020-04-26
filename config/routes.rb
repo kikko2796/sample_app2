@@ -4,9 +4,17 @@ Rails.application.routes.draw do
   get    '/about',   to: 'static_pages#about'
   get    '/contact', to: 'static_pages#contact'
   get    '/signup',  to: 'users#new'
+  post '/signup',  to: 'users#create'
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
+  get    '/users',   to:'users#index'
+  post   '/users',   to:    'users#create'
+  get    '/users/new',  to:    'users#new'
+  get    '/users/:id/edit',to: 'users#edit'
+  get    '/users/:id',      to:'users#show'
+  patch  '/users/:id',      to:'users#update'
+  put    '/users/:id',      to:'users#update'
+  delete '/users/:id',      to:'users#destroy'
   resources :users
-  resources :account_activations, only: [:edit]
 end
